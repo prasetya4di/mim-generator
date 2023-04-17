@@ -38,6 +38,8 @@ class _NewCaptionField extends State<NewCaptionField> {
               const SizedBox(width: 6),
               Flexible(
                 child: TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
                   focusNode: _focusNode,
                   controller: _controller,
                   onChanged: (_) {
