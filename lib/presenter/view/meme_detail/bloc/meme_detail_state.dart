@@ -19,6 +19,8 @@ abstract class MemeDetailState with _$MemeDetailState {
 
   const factory MemeDetailState.loading() = MemeDetailLoadingState;
 
+  const factory MemeDetailState.savingImage() = MemeDetailSavingImageState;
+
   const factory MemeDetailState.error(String message) = MemeDetailErrorState;
 
   const factory MemeDetailState.loadedState() = MemeDetailLoadedState;

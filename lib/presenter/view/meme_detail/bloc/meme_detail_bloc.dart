@@ -22,7 +22,7 @@ class MemeDetailBloc extends Bloc<MemeDetailEvent, MemeDetailState> {
           emit(const MemeDetailState.loadedState());
         },
         saveEditedMeme: (imageBytes, serverId) async {
-          emit(const MemeDetailState.loading());
+          emit(const MemeDetailState.savingImage());
           _editedMeme = await _saveMemeImage(imageBytes, serverId);
           emit(const MemeDetailLoadedState());
         },
