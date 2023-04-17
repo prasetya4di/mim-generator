@@ -49,6 +49,10 @@ class _AddLogoField extends State<AddLogoField> {
                 onTap: selectedImage == null
                     ? null
                     : () {
+                        setState(() {
+                          selectedImage = null;
+                          _opacity = 1;
+                        });
                         widget.onAddLogo(selectedImage!, _opacity);
                       },
               )
