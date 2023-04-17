@@ -20,7 +20,7 @@ class _MemeEditLayout extends State<MemeEditLayout> {
         MemeImage(imageUrl: widget.meme.url ?? ""),
         const MemeDraggableCaption(
           caption: "One doesn't \n simply hahaha",
-          textColor: Colors.white,
+          textColor: Colors.black,
         )
       ],
     );
