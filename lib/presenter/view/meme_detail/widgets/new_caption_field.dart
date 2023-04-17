@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mim_generator/presenter/view/meme_detail/widgets/button_add.dart';
 import 'package:mim_generator/presenter/view/meme_detail/widgets/caption_color_picker.dart';
 
 class NewCaptionField extends StatefulWidget {
@@ -48,16 +49,15 @@ class _NewCaptionField extends State<NewCaptionField> {
                 ),
               ),
               const SizedBox(width: 6),
-              TextButton(
-                onPressed: _controller.value.text.isEmpty
+              ButtonAdd(
+                onTap: _controller.value.text.isEmpty
                     ? null
                     : () {
                         _focusNode.unfocus();
                         widget.onSubmit(_controller.value.text, _captionColor);
                         resetValue();
                       },
-                child: const Text("Add"),
-              )
+              ),
             ],
           )
         ],
