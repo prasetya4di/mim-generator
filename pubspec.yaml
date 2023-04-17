@@ -44,6 +44,7 @@ dependencies:
   cached_network_image: ^3.2.3
   chopper: ^6.1.1
   json_annotation: ^4.8.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
