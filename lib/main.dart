@@ -2,6 +2,7 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mim_generator/data/entity/edited_meme.dart';
+import 'package:mim_generator/data/entity/meme.dart';
 import 'package:mim_generator/data/repository/impl/meme_repository_impl.dart';
 import 'package:mim_generator/data/repository/meme_repository.dart';
 import 'package:mim_generator/data/source/local/impl/meme_dao_impl.dart';
@@ -13,6 +14,7 @@ import 'package:mim_generator/domain/get_meme.dart';
 import 'package:mim_generator/domain/impl/get_meme_impl.dart';
 import 'package:mim_generator/presenter/view/meme/bloc/meme_bloc.dart';
 import 'package:mim_generator/presenter/view/meme/meme_page.dart';
+import 'package:mim_generator/presenter/view/meme_detail/meme_detail_page.dart';
 import 'package:mim_generator/util/constants/routes.dart';
 
 import 'objectbox.g.dart';
@@ -50,7 +52,18 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Mim Generator',
         theme: ThemeData(primarySwatch: Colors.blue, fontFamily: "Poppins"),
-        routes: {Routes.meme: (ctx) => MemePage()},
+        onGenerateRoute: (routeSettings) {
+          switch (routeSettings.name) {
+            case Routes.meme:
+              return MaterialPageRoute(builder: (_) => const MemePage());
+            case Routes.memeDetail:
+              final args = routeSettings.arguments as Meme;
+
+              return MaterialPageRoute(
+                  builder: (ctx) => MemeDetailPage(meme: args));
+          }
+          return null;
+        },
         initialRoute: Routes.meme,
       ),
     );
