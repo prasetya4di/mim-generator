@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/services.dart';
+import 'package:mim_generator/data/entity/edited_meme.dart';
 
 abstract class SaveMemeImage {
-  Future<File> call(Uint8List imageBytes, String serverId);
+  Future<EditedMeme> call(Uint8List imageBytes, String serverId);
 }

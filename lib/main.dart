@@ -10,10 +10,15 @@ import 'package:mim_generator/data/source/local/meme_dao.dart';
 import 'package:mim_generator/data/source/local/objectbox.dart';
 import 'package:mim_generator/data/source/network/chopper_service.dart';
 import 'package:mim_generator/data/source/network/meme_service.dart';
+import 'package:mim_generator/domain/get_edited_meme.dart';
 import 'package:mim_generator/domain/get_meme.dart';
+import 'package:mim_generator/domain/impl/get_edited_meme_impl.dart';
 import 'package:mim_generator/domain/impl/get_meme_impl.dart';
+import 'package:mim_generator/domain/impl/save_meme_image_impl.dart';
+import 'package:mim_generator/domain/save_meme_image.dart';
 import 'package:mim_generator/presenter/view/meme/bloc/meme_bloc.dart';
 import 'package:mim_generator/presenter/view/meme/meme_page.dart';
+import 'package:mim_generator/presenter/view/meme_detail/bloc/meme_detail_bloc.dart';
 import 'package:mim_generator/presenter/view/meme_detail/meme_detail_page.dart';
 import 'package:mim_generator/util/constants/routes.dart';
 
@@ -47,7 +52,13 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<MemeRepository>(
             create: (ctx) => MemeRepositoryImpl(ctx.read(), ctx.read())),
         RepositoryProvider<GetMeme>(create: (ctx) => GetMemeImpl(ctx.read())),
-        BlocProvider(create: (ctx) => MemeBloc(ctx.read()))
+        RepositoryProvider<SaveMemeImage>(
+            create: (ctx) => SaveMemeImageImpl(ctx.read())),
+        RepositoryProvider<GetEditedMeme>(
+            create: (ctx) => GetEditedMemeImpl(ctx.read())),
+        RepositoryProvider<GetMeme>(create: (ctx) => GetMemeImpl(ctx.read())),
+        BlocProvider(create: (ctx) => MemeBloc(ctx.read())),
+        BlocProvider(create: (ctx) => MemeDetailBloc(ctx.read(), ctx.read()))
       ],
       child: MaterialApp(
         title: 'Mim Generator',

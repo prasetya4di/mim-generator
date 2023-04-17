@@ -11,9 +11,10 @@ class SaveMemeImageImpl implements SaveMemeImage {
   SaveMemeImageImpl(this._repository);
 
   @override
-  Future<File> call(Uint8List imageBytes, String serverId) async {
+  Future<EditedMeme> call(Uint8List imageBytes, String serverId) async {
     File file = await File('$serverId.jpg').writeAsBytes(imageBytes);
-    _repository.updateMeme(EditedMeme(serverId: serverId, filePath: file.path));
-    return file;
+    EditedMeme editedMeme = EditedMeme(serverId: serverId, filePath: file.path);
+    _repository.updateMeme(editedMeme);
+    return editedMeme;
   }
 }
