@@ -9,4 +9,6 @@ class Assets {
       'assets/fonts/Poppins-SemiBold.ttf';
   static const String imagesEmptyMemeIllustration =
       'assets/images/empty_meme_illustration.svg';
+  static const String imagesSearchingMemeIllustration =
+      'assets/images/searching_meme_illustration.svg';
 }

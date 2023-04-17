@@ -4,6 +4,7 @@ import 'package:mim_generator/presenter/view/meme/bloc/meme_bloc.dart';
 import 'package:mim_generator/presenter/view/meme/bloc/meme_state.dart';
 import 'package:mim_generator/presenter/view/meme/widgets/empty_meme.dart';
 import 'package:mim_generator/presenter/view/meme/widgets/list_meme.dart';
+import 'package:mim_generator/presenter/view/meme/widgets/loading_meme.dart';
 
 class MemePage extends StatelessWidget {
   const MemePage({super.key});
@@ -24,6 +25,8 @@ class MemePage extends StatelessWidget {
         builder: (context, state) {
           if (state is EmptyMemeState) {
             return const EmptyMeme();
+          } else if (state is LoadingMeme) {
+            return const LoadingMeme();
           } else {
             return ListMeme(bloc.memes);
           }
