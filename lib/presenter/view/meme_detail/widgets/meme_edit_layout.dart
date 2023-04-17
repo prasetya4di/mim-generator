@@ -5,6 +5,7 @@ import 'package:mim_generator/presenter/view/meme_detail/widgets/draggable_logo.
 import 'package:mim_generator/presenter/view/meme_detail/widgets/meme_draggable_caption.dart';
 import 'package:mim_generator/presenter/view/meme_detail/widgets/meme_image.dart';
 import 'package:mim_generator/presenter/view/meme_detail/widgets/new_caption_field.dart';
+import 'package:mim_generator/presenter/view/meme_detail/widgets/save_image_button.dart';
 
 class MemeEditLayout extends StatefulWidget {
   final Meme meme;
@@ -28,6 +29,10 @@ class _MemeEditLayout extends State<MemeEditLayout> {
             ...memeWidget,
           ],
         ),
+        if (memeWidget.isNotEmpty)
+          SaveImageButton(
+            onTap: () {},
+          ),
         const SizedBox(height: 8),
         NewCaptionField(
           onSubmit: (caption, color) {
