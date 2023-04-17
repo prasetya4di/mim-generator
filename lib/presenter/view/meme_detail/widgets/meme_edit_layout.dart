@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mim_generator/data/entity/meme.dart';
-import 'package:mim_generator/presenter/view/meme_detail/widgets/meme_draggable_caption.dart';
 import 'package:mim_generator/presenter/view/meme_detail/widgets/meme_image.dart';
 import 'package:mim_generator/presenter/view/meme_detail/widgets/new_caption_field.dart';
+import 'package:mim_generator/presenter/view/meme_detail/widgets/resizable_meme_caption.dart';
 
 class MemeEditLayout extends StatefulWidget {
   final Meme meme;
@@ -21,14 +21,17 @@ class _MemeEditLayout extends State<MemeEditLayout> {
     return Column(
       children: [
         Stack(
-          children: [MemeImage(imageUrl: widget.meme.url ?? ""), ...memeWidget],
+          children: [
+            MemeImage(imageUrl: widget.meme.url ?? ""),
+            ...memeWidget,
+          ],
         ),
         const SizedBox(height: 8),
         NewCaptionField(
           onSubmit: (caption, color) {
             setState(() {
               memeWidget.add(
-                  MemeDraggableCaption(caption: caption, textColor: color));
+                  ResizableMemeCaption(caption: caption, textColor: color));
             });
           },
         )
