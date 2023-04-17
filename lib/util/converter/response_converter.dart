@@ -14,7 +14,7 @@ class ResponseConverter extends JsonConverter {
         (jsonRes.body is String && (jsonRes.body as String).isEmpty)) {
       return jsonRes.copyWith(body: null);
     }
-    final dynamic body = jsonRes.body["data"]!;
+    final dynamic body = jsonRes.body!;
     final dynamic decodedItem = JsonTypeParser.decode<Item>(body);
     return jsonRes.copyWith<ResultType>(body: decodedItem as ResultType);
   }

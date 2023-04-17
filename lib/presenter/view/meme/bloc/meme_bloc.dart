@@ -12,8 +12,8 @@ class MemeBloc extends Bloc<MemeEvent, MemeState> {
   List<Meme> get memes => _memes;
 
   MemeBloc(this._getMeme) : super(const MemeState.initial()) {
-    on<MemeEvent>((event, emit) {
-      event.when(
+    on<MemeEvent>((event, emit) async {
+      await event.when(
         loadMeme: () async {
           emit(const MemeState.loading());
           await Task(() async {
