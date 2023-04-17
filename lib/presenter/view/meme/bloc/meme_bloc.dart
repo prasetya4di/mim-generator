@@ -15,8 +15,8 @@ class MemeBloc extends Bloc<MemeEvent, MemeState> {
     on<MemeEvent>((event, emit) async {
       await event.when(
         loadMeme: () async {
-          emit(const MemeState.loading());
           await Task(() async {
+            emit(const MemeState.loading());
             return _getMeme();
           }).run().then((value) {
             value.fold(
@@ -24,8 +24,12 @@ class MemeBloc extends Bloc<MemeEvent, MemeState> {
                 emit(MemeState.error(l.toString()));
               },
               (r) {
-                _memes = r;
-                emit(const MemeState.loadedState());
+                if (r.isEmpty) {
+                  emit(const MemeState.emptyMemeState());
+                } else {
+                  _memes = r;
+                  emit(const MemeState.loadedState());
+                }
               },
             );
           }).catchError((error) {
@@ -33,8 +37,8 @@ class MemeBloc extends Bloc<MemeEvent, MemeState> {
           });
         },
         refreshMeme: () async {
-          emit(const MemeState.refresh());
           await Task(() async {
+            emit(const MemeState.refresh());
             return _getMeme();
           }).run().then((value) {
             value.fold(
@@ -42,8 +46,12 @@ class MemeBloc extends Bloc<MemeEvent, MemeState> {
                 emit(MemeState.error(l.toString()));
               },
               (r) {
-                _memes = r;
-                emit(const MemeState.loadedState());
+                if (r.isEmpty) {
+                  emit(const MemeState.emptyMemeState());
+                } else {
+                  _memes = r;
+                  emit(const MemeState.loadedState());
+                }
               },
             );
           }).catchError((error) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mim_generator/presenter/view/meme/bloc/meme_bloc.dart';
 import 'package:mim_generator/presenter/view/meme/bloc/meme_state.dart';
+import 'package:mim_generator/presenter/view/meme/widgets/empty_meme.dart';
 import 'package:mim_generator/presenter/view/meme/widgets/list_meme.dart';
 
 class MemePage extends StatelessWidget {
@@ -21,7 +22,11 @@ class MemePage extends StatelessWidget {
       ),
       body: BlocBuilder<MemeBloc, MemeState>(
         builder: (context, state) {
-          return ListMeme(bloc.memes);
+          if (state is EmptyMemeState) {
+            return const EmptyMeme();
+          } else {
+            return ListMeme(bloc.memes);
+          }
         },
       ),
     );

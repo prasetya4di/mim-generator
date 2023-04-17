@@ -20,4 +20,6 @@ abstract class MemeState with _$MemeState {
   const factory MemeState.error(String message) = MemeErrorState;
 
   const factory MemeState.loadedState() = MemeLoadedState;
+
+  const factory MemeState.emptyMemeState() = EmptyMemeState;
 }
