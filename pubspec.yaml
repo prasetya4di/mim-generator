@@ -45,6 +45,7 @@ dependencies:
   json_annotation: ^4.8.0
   dartz: ^0.10.1
   flutter_bloc: ^8.1.2
+  flutter_svg: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -114,3 +115,5 @@ flutter:
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
+  assets:
+    - assets/images/
