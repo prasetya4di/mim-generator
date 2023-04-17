@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mim_generator/data/entity/meme.dart';
+import 'package:mim_generator/presenter/view/meme_detail/widgets/add_logo_field.dart';
+import 'package:mim_generator/presenter/view/meme_detail/widgets/draggable_logo.dart';
+import 'package:mim_generator/presenter/view/meme_detail/widgets/meme_draggable_caption.dart';
 import 'package:mim_generator/presenter/view/meme_detail/widgets/meme_image.dart';
 import 'package:mim_generator/presenter/view/meme_detail/widgets/new_caption_field.dart';
-import 'package:mim_generator/presenter/view/meme_detail/widgets/resizable_meme_caption.dart';
 
 class MemeEditLayout extends StatefulWidget {
   final Meme meme;
@@ -31,10 +33,16 @@ class _MemeEditLayout extends State<MemeEditLayout> {
           onSubmit: (caption, color) {
             setState(() {
               memeWidget.add(
-                  ResizableMemeCaption(caption: caption, textColor: color));
+                  MemeDraggableCaption(caption: caption, textColor: color));
             });
           },
-        )
+        ),
+        const SizedBox(height: 8),
+        AddLogoField(onAddLogo: (image, opacity) {
+          setState(() {
+            memeWidget.add(DraggableLogo(file: image, opacity: opacity));
+          });
+        })
       ],
     );
   }
