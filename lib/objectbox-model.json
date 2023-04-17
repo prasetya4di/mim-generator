@@ -51,9 +51,33 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "2:4535933260030789250",
+      "lastPropertyId": "3:3863101892822521293",
+      "name": "EditedMeme",
+      "properties": [
+        {
+          "id": "1:6928702083581233787",
+          "name": "obxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6516861778873985216",
+          "name": "serverId",
+          "type": 9
+        },
+        {
+          "id": "3:3863101892822521293",
+          "name": "filePath",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "1:3359277204051453571",
+  "lastEntityId": "2:4535933260030789250",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",

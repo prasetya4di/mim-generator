@@ -1,4 +1,4 @@
-import 'package:mim_generator/objectbox.g.dart';
+import 'package:objectbox/objectbox.dart';
 
 @Entity()
 class EditedMeme {
