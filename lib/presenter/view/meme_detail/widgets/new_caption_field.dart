@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:mim_generator/presenter/view/meme_detail/widgets/caption_color_picker.dart';
 
 class NewCaptionField extends StatefulWidget {
   final Function(String, Color) onSubmit;
@@ -11,9 +11,10 @@ class NewCaptionField extends StatefulWidget {
 }
 
 class _NewCaptionField extends State<NewCaptionField> {
-  String _newCaption = "";
+  final FocusNode _focusNode = FocusNode();
+  final TextEditingController _controller = TextEditingController();
+
   Color _captionColor = Colors.black;
-  Color _pickerColor = Colors.black;
 
   @override
   Widget build(BuildContext context) {
@@ -26,56 +27,31 @@ class _NewCaptionField extends State<NewCaptionField> {
           const SizedBox(height: 6),
           Row(
             children: [
-              InkWell(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: const Text('Select a caption color!'),
-                        content: SingleChildScrollView(
-                          child: ColorPicker(
-                            pickerColor: _captionColor,
-                            onColorChanged: (newColor) {
-                              _pickerColor = newColor;
-                            },
-                          ),
-                        ),
-                        actions: <Widget>[
-                          ElevatedButton(
-                            child: const Text('Select'),
-                            onPressed: () {
-                              setState(() => _captionColor = _pickerColor);
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
+              CaptionColorPicker(
+                onSelect: (color) {
+                  setState(() {
+                    _captionColor = color;
+                  });
                 },
-                child: Container(
-                  width: 96,
-                  height: 48,
-                  color: _captionColor,
-                ),
+                selectedColor: _captionColor,
               ),
               const SizedBox(width: 6),
               Flexible(
                 child: TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      _newCaption = value;
-                    });
+                  focusNode: _focusNode,
+                  controller: _controller,
+                  onChanged: (_) {
+                    setState(() {});
                   },
                 ),
               ),
               const SizedBox(width: 6),
               TextButton(
-                onPressed: _newCaption.isEmpty
+                onPressed: _controller.value.text.isEmpty
                     ? null
                     : () {
-                        widget.onSubmit(_newCaption, _captionColor);
+                        _focusNode.unfocus();
+                        widget.onSubmit(_controller.value.text, _captionColor);
                         resetValue();
                       },
                 child: const Text("Add"),
@@ -89,9 +65,8 @@ class _NewCaptionField extends State<NewCaptionField> {
 
   resetValue() {
     setState(() {
-      _newCaption = "";
+      _controller.clear();
       _captionColor = Colors.black;
-      _pickerColor = _captionColor;
     });
   }
 }
