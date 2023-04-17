@@ -1,0 +1,67 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:3359277204051453571",
+      "lastPropertyId": "8:4501295976402106502",
+      "name": "Meme",
+      "properties": [
+        {
+          "id": "1:5621206876617944129",
+          "name": "obxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:223274454993402021",
+          "name": "id",
+          "type": 9
+        },
+        {
+          "id": "3:413523565032306549",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:8521562804069452591",
+          "name": "url",
+          "type": 9
+        },
+        {
+          "id": "5:8295959502835181197",
+          "name": "width",
+          "type": 6
+        },
+        {
+          "id": "6:2788648140590280306",
+          "name": "height",
+          "type": 6
+        },
+        {
+          "id": "7:2217147184286520156",
+          "name": "boxCount",
+          "type": 6
+        },
+        {
+          "id": "8:4501295976402106502",
+          "name": "captions",
+          "type": 6
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:3359277204051453571",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
