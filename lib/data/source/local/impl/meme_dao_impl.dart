@@ -8,8 +8,14 @@ class MemeDaoImpl implements MemeDao {
   MemeDaoImpl(this._box);
 
   @override
-  EditedMeme? get(String serverId) =>
-      _box.getAll().firstWhere((element) => element.serverId == serverId);
+  EditedMeme? get(String serverId) {
+    Query<EditedMeme> query =
+        _box.query(EditedMeme_.serverId.equals(serverId)).build();
+    EditedMeme? editedMeme = query.findFirst();
+    query.close();
+
+    return editedMeme;
+  }
 
   @override
   updateMeme(EditedMeme editedMeme) {

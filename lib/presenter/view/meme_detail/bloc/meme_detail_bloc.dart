@@ -14,8 +14,8 @@ class MemeDetailBloc extends Bloc<MemeDetailEvent, MemeDetailState> {
 
   MemeDetailBloc(this._getEditedMeme, this._saveMemeImage)
       : super(const MemeDetailState.initial()) {
-    on<MemeDetailEvent>((event, emit) {
-      event.when(
+    on<MemeDetailEvent>((event, emit) async {
+      await event.when(
         loadEditedMeme: (serverId) {
           emit(const MemeDetailState.loading());
           _editedMeme = _getEditedMeme(serverId);
