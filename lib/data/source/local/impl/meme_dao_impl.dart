@@ -8,9 +8,8 @@ class MemeDaoImpl implements MemeDao {
   MemeDaoImpl(this._box);
 
   @override
-  EditedMeme? get(String serverId) {
-    return null;
-  }
+  EditedMeme? get(String serverId) =>
+      _box.getAll().firstWhere((element) => element.serverId == serverId);
 
   @override
   updateMeme(EditedMeme editedMeme) {
