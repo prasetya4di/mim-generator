@@ -13,7 +13,6 @@ class MemeCaption extends StatelessWidget {
       caption,
       style: TextStyle(
         color: textColor,
-        fontSize: 24.0,
         fontWeight: FontWeight.bold,
       ),
       textAlign: TextAlign.center,
