@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:mim_generator/presenter/view/meme_detail/widgets/meme_caption.dart';
 
-class MemeDraggableCaption extends StatefulWidget {
+class DraggableCaption extends StatefulWidget {
   final String caption;
   final Color textColor;
 
-  const MemeDraggableCaption(
+  const DraggableCaption(
       {super.key, required this.caption, required this.textColor});
 
   @override
-  State<MemeDraggableCaption> createState() => _MemeDraggableCaptionState();
+  State<DraggableCaption> createState() => _DraggableCaptionState();
 }
 
-class _MemeDraggableCaptionState extends State<MemeDraggableCaption> {
+class _DraggableCaptionState extends State<DraggableCaption> {
   bool _dragging = false;
-  Offset _offset = const Offset(0.0, 0.0);
+  Offset _offset = const Offset(50.0, 50.0);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _MemeDraggableCaptionState extends State<MemeDraggableCaption> {
         onDragEnd: (details) {
           setState(() {
             _dragging = false;
-            _offset = details.offset - const Offset(0, 70);
+            _offset = details.offset - const Offset(0, 50);
           });
         },
         child: MemeCaption(

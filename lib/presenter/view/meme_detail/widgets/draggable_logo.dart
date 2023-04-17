@@ -14,7 +14,7 @@ class DraggableLogo extends StatefulWidget {
 
 class _DraggableLogoState extends State<DraggableLogo> {
   bool _dragging = false;
-  Offset _offset = const Offset(0.0, 0.0);
+  Offset _offset = const Offset(50.0, 50.0);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _DraggableLogoState extends State<DraggableLogo> {
         onDragEnd: (details) {
           setState(() {
             _dragging = false;
-            _offset = details.offset - const Offset(0, 70);
+            _offset = details.offset - const Offset(0, 50);
           });
         },
         child: ImageLogo(
