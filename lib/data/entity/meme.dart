@@ -1,4 +1,9 @@
+import 'package:objectbox/objectbox.dart';
+
+@Entity()
 class Meme {
+  @Id()
+  int obxId = 0;
   String? id;
   String? name;
   String? url;
@@ -10,11 +15,11 @@ class Meme {
   Meme(
       {this.id,
       this.name,
-      this.url,
-      this.width,
-      this.height,
-      this.boxCount,
-      this.captions});
+    this.url,
+    this.width,
+    this.height,
+    this.boxCount,
+    this.captions});
 
   Meme.fromJson(Map<String, dynamic> json) {
     id = json['id'];
