@@ -13,8 +13,8 @@ class SaveMemeImageImpl implements SaveMemeImage {
 
   @override
   Future<EditedMeme> call(Uint8List imageBytes, String serverId) async {
-    final docsDir = await getApplicationDocumentsDirectory();
-    File file = await File('${docsDir.path}/$serverId.jpg').create();
+    final docsDir = await getExternalStorageDirectory();
+    File file = await File('${docsDir?.path}/$serverId.jpg').create();
     file = await file.writeAsBytes(imageBytes);
     EditedMeme editedMeme = EditedMeme(serverId: serverId, filePath: file.path);
     _repository.updateMeme(editedMeme);
