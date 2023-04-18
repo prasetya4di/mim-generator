@@ -1,6 +1,10 @@
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_flipperkit/flipper_client.dart';
+import 'package:flutter_flipperkit/plugins/network/flipper_network_plugin.dart';
+import 'package:flutter_flipperkit/plugins/redux/flipper_reduxinspector_plugin.dart';
+import 'package:flutter_flipperkit/plugins/sharedpreferences/flipper_shared_preferences_plugin.dart';
 import 'package:mim_generator/data/entity/edited_meme.dart';
 import 'package:mim_generator/data/entity/meme.dart';
 import 'package:mim_generator/data/repository/impl/meme_repository_impl.dart';
@@ -28,6 +32,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   ObjectBox objectBox = await ObjectBox.create();
+
+  FlipperClient flipperClient = FlipperClient.getDefault();
+
+  flipperClient.addPlugin(FlipperNetworkPlugin());
+  flipperClient.addPlugin(FlipperReduxInspectorPlugin());
+  flipperClient.addPlugin(FlipperSharedPreferencesPlugin());
+  flipperClient.start();
 
   runApp(MyApp(objectBox));
 }

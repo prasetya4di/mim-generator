@@ -50,6 +50,10 @@ dependencies:
   image_picker: ^0.8.7+3
   widgets_to_image: ^0.0.2
   appinio_social_share: ^0.2.1
+  flutter_flipperkit:
+    git:
+      url: https://github.com/prasetya4di/flutter_flipperkit
+      ref: fix_http_client_implementation
 
 dev_dependencies:
   flutter_test:
